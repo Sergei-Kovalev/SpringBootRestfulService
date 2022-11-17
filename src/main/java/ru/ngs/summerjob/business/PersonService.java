@@ -1,4 +1,4 @@
-package ru.ngs.summerjob.buisness;
+package ru.ngs.summerjob.business;
 
 import ru.ngs.summerjob.domain.Person;
 

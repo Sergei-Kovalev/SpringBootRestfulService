@@ -4,14 +4,16 @@ public class Person {
     int id;
     String firstName;
     String lastName;
+    int age;
 
     public Person() {
     }
 
-    public Person(int id, String firstName, String lastName) {
+    public Person(int id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.age = age;
     }
 
     public int getId() {
@@ -26,12 +28,17 @@ public class Person {
         return lastName;
     }
 
+    public int getAge() {
+        return age;
+    }
+
     @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", age=" + age +
                 '}';
     }
 }
