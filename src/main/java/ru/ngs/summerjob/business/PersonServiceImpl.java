@@ -30,4 +30,10 @@ public class PersonServiceImpl implements PersonService {
         Person person = personRepository.getPersonById(personId).orElseThrow(() -> new PersonNotFoundException(personId));
         personRepository.updatePerson(firstName, lastName, age, person.getId());
     }
+
+    @Override
+    public void deletePerson(int personId) {
+        Person person = personRepository.getPersonById(personId).orElseThrow(() -> new PersonNotFoundException(personId));
+        personRepository.deletePerson(personId);
+    }
 }
