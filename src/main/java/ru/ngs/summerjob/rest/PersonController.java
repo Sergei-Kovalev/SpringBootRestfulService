@@ -17,14 +17,26 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping(value = "/{personId:\\d+}")
+    @GetMapping(value = "/{personId:\\d+}")                         //получение данных
     public Person getPersonService(@PathVariable int personId) {
         return personService.getPerson(personId);
     }
 
-    @PostMapping
+    @PostMapping                                                    //добавление данных
     @ResponseStatus(HttpStatus.CREATED)
     public void createPerson(@Valid @RequestBody PersonRequest request) {
         personService.createPerson(request.firstName(), request.lastName(), request.age());
+    }
+
+    @PutMapping(value = "/{personId:\\d+}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)                          //изменение данных
+    public void updatePerson(@Valid @RequestBody PersonRequest request,
+                             @PathVariable int personId) {
+        personService.updatePerson(
+                request.firstName(),
+                request.lastName(),
+                request.age(),
+                personId
+        );
     }
 }

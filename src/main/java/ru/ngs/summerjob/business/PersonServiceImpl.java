@@ -17,11 +17,17 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person getPerson(int personId) {
-        return personRepository.getPersonById(personId).orElseThrow(() ->new PersonNotFoundException(personId));
+        return personRepository.getPersonById(personId).orElseThrow(() -> new PersonNotFoundException(personId));
     }
 
     @Override
     public void createPerson(String firstName, String lastName, int age) {
         personRepository.insertPerson(firstName, lastName, age);
+    }
+
+    @Override
+    public void updatePerson(String firstName, String lastName, int age, int personId) {
+        Person person = personRepository.getPersonById(personId).orElseThrow(() -> new PersonNotFoundException(personId));
+        personRepository.updatePerson(firstName, lastName, age, person.getId());
     }
 }
